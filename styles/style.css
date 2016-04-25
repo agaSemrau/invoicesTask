@@ -1,0 +1,18 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+p {
+    display:inline;
+}
+
+.container {
+    border: 2px solid black;
+    width: 90%;
+    height: 80%;
+    padding: 20px;
+}
+
+.form-horizontal {
+    padding-top: 20px;
+}
