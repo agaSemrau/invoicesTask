@@ -1,5 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
 }
 
 p {
@@ -15,4 +16,20 @@ p {
 
 .form-horizontal {
     padding-top: 20px;
+}
+
+label {
+    text-align: right;
+    vertical-align: middle;
+    padding: 7px 15px 7px 0px;
+}
+
+
+
+input[type="text"], .optgroup {
+    font-size:12px;
+}
+
+.col-left {
+    padding-left: 15px !important;
 }
