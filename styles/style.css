@@ -24,6 +24,17 @@ label {
     padding: 7px 15px 7px 0px;
 }
 
+#del {
+    height: 24px;
+    width: 24px;
+    background-image: url("../images/trash.png");
+    margin: auto;
+}
+
+#dialog {
+    display:none;
+    width: 500px;
+}
 
 
 input[type="text"], .optgroup {
