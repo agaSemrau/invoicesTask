@@ -1,4 +1,6 @@
 $('document').ready(function () {
+    var arrayToDisplay=[];
+    var totalArrayToDisplay = [];
 
     $(".datepicker").datepicker();
     var finalArray = [];
@@ -6,30 +8,33 @@ $('document').ready(function () {
 
     $.fn.serializeObject = function () {
         finalArray = this.serializeArray();
-        console.log(this.name);
-        console.log(finalArray);
-
-        $.each(finalArray, function () {
-            console.log(this.name);
-        })
-
         var result = {};
         for (var i=0; i<finalArray.length; i++) {
             result[finalArray[i].name] = finalArray[i].value;
         }
 
-
-
-//result
-        console.log(result);
-        var fvnr = result.fakturanr;
-
         var myFinalObject = {
             FordrHaver: "Olsen Rer",
-            Faktnr: fvnr,
+            Faktnr: result.fakturanr,
+            Skyldner: "Hodeland lys AS",
+            Belop: result.belop,
+            Rente: result.rentesats
+        };
 
-
+        for(key in myFinalObject) {
+            if(myFinalObject.hasOwnProperty(key)) {
+                var value= myFinalObject[key];
+                arrayToDisplay.push(value);
+            }
         }
+
+
+        totalArrayToDisplay.push(arrayToDisplay)
+
+
+        console.log (myFinalObject);
+        console.log(arrayToDisplay);
+
         //$.each(finalArray, function () {
         //    if (o[this.name] !== undefined) {
         //        if (!o[this.name].push) {
@@ -50,15 +55,17 @@ $('document').ready(function () {
         $('.form-horizontal').submit(function () {
             ($('.form-horizontal').serializeObject());
 
-            var valuesArray = finalArray.map(function (a) {
-                return a.value;
-            });
-            totalArray.push(valuesArray);
-            console.log(totalArray);
+            console.log(totalArrayToDisplay);
+
+            //var valuesArray = finalArray.map(function (a) {
+            //    return a.value;
+            //});
+            //totalArray.push(valuesArray);
+            //console.log(totalArray);
 
 
             $('#example').DataTable({
-                data: totalArray,
+                data: totalArrayToDisplay,
                 columns: [
                     {title: "Fordr.haver",},
                     {title: "Faktnr/kto.nr"},
