@@ -58,6 +58,7 @@
                 </div>
             </div>
 
+
             <div class="col-sm-6">
                 <label class="col-sm-4" for="kravet">Hva gjelder kravet?</label>
                 <div class="col-sm-8 col-right">
@@ -92,7 +93,7 @@
         <div class="form-group col-sm-12">
             <div class="col-sm-6">
                 <label class="col-sm-6">Inkassovarsel sendt* </label>
-                <div id="inkassovarsel" class="input-group date datepicker col-sm-4 col-left" data-date-format="mm-dd-yyyy">
+                <div  id="inkassovarsel" class="input-group date datepicker col-sm-4 col-left" data-date-format="mm-dd-yyyy">
                     <input name="inkassovarsel" class="form-control" type="text" placeholder="dd/mm/ее"/>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
@@ -115,7 +116,7 @@
         <div class="form-group col-sm-12">
         <div class="col-sm-6">
             <label class="col-sm-6">Farfallsdato Inkassovarsel* </label>
-            <div id="farfallsdato-inkassovarsel" name="farfallsdato-inkassovarsel" class="input-group date col-sm-offset-1 col-sm-4 col-left"
+            <div id="farinkas" name="farinkas" class="input-group date col-sm-offset-1 col-sm-4 col-left"
                  data-date-format="mm-dd-yyyy">
                 <input class="form-control datepicker" type="text" placeholder="dd/mm/ее"/>
                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -126,9 +127,9 @@
 
 
         <div class="form-group col-sm-12">
-            <button type="submit" class="btn btn-primary col-sm-offset-6 col-sm-3">Legg til innbetaling/kreditnota
+            <button value="Submit" type="submit" class="btn btn-primary col-sm-offset-6 col-sm-3">Legg til innbetaling/kreditnota
             </button>
-            <button type="submit" class="btn btn-primary col-sm-offset-1 col-sm-2">Legg til ny faktura</button>
+            <button  value="Submit" type="submit" class="btn btn-primary col-sm-offset-1 col-sm-2">Legg til ny faktura</button>
         </div>
 
     </form>
@@ -142,8 +143,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+<script src="APP/validate.js"></script>
 <script src="APP/app.js"></script>
 
 </body>

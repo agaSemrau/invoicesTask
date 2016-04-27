@@ -44,3 +44,14 @@ input[type="text"], .optgroup {
 .col-left {
     padding-left: 15px !important;
 }
+
+#form label.error {
+    color:red;
+}
+#form input.error {
+    border:1px solid red;
+}
+
+.help-block {
+    text-align: right;
+}
