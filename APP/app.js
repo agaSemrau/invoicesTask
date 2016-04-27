@@ -76,6 +76,26 @@ $('document').ready(function () {
                 required: true
             }
         },
+        messages: {
+            dato: {
+                pattern: "Correct format: dd/mm/yy"
+            },
+            farfallsdato: {
+                pattern: "Correct format: dd/mm/yy"
+            },
+            inkassovarsel: {
+                pattern: "Correct format: dd/mm/yy"
+            },
+            farinkas: {
+                pattern: "Correct format: dd/mm/yy"
+            },
+            fakturanr: {
+                pattern: "Correct format: 8-10 numbers"
+            },
+            belop: {
+                pattern: "Correct format eg. 345.78"
+            }
+        },
         highlight: function (element) {
             $(element).closest('.wrapper').addClass('has-error');
         },
