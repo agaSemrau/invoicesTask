@@ -45,6 +45,11 @@ input[type=radio] {
 .ui-dialog {
     min-width: 300px !important;
     width:auto !important;
+    letter-spacing: 2px;
+}
+.ui-widget{
+    font-size: 13px !important;
+    family: 'Open Sans', sans-serif !important;
 }
 input[type="text"], .optgroup {
     font-size:12px;
