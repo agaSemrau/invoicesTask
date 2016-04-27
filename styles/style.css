@@ -31,9 +31,14 @@ label {
     margin: auto;
 }
 
-#dialog {
+#dialog, #dialog1 {
     display:none;
     width: 500px;
+}
+
+.ui-dialog {
+    min-width: 300px !important;
+    width:auto !important;
 }
 
 
@@ -52,6 +57,6 @@ input[type="text"], .optgroup {
     border:1px solid red;
 }
 
-.help-block {
+span {
     text-align: right;
 }
