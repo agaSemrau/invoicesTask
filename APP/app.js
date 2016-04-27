@@ -1,11 +1,13 @@
 $('document').ready(function () {
-    var result = {};
-    var totalArrayToDisplay = [];
-    var table;
-    var table1;
+    var result = {},
+        totalArrayToDisplay = [],
+        table1,
+        table2;
 
-    $(".datepicker").datepicker({
+    $(".date").datepicker({
         format: 'dd/mm/yy'
+    }).on('changeDate', function () {
+        $(this).datepicker('hide');
     });
 
     $.fn.serializeObject = function () {
@@ -15,51 +17,52 @@ $('document').ready(function () {
         }
     };
 
-    checkDups = function () {
-        var lastElementIndex = totalArrayToDisplay.length-1;
-
-        console.log(totalArrayToDisplay);
-        for(var i= 0, len=totalArrayToDisplay.length; i < len; i++){
-            if(totalArrayToDisplay[i][1]== result.fakturanr){$("#dialog1").dialog(); totalArrayToDisplay.splice(lastElementIndex, 1); }
+    checkDupes = function () {
+        var lastElementIndex = totalArrayToDisplay.length - 1;
+        for (var i = 0, len = totalArrayToDisplay.length; i < len; i++) {
+            if (totalArrayToDisplay[i][1] == result.fakturanr) {
+                $("#dialog1").attr("title", "Dupe").dialog();
+                totalArrayToDisplay.splice(lastElementIndex, 1);
+            }
         }
     };
 
-    function Debtor(Faktnr, Belop, Rente, Dato, Farfallsdato, Inkassovarsel, FarInkas) {
-        this.FordrHaver = "Olsen Rer";
-        this.Faktnr = Faktnr || "No data provided";
-        this.Skyldner = "Hodeland lys AS";
-        this.Belop = Belop || "No data provided";
-        this.Rente = Rente || "No data provided";
-        this.Delete = "";
-        this.Dato = Dato || "No data provided";
-        this.Farfallsdato = Farfallsdato || "No data provided";
-        this.Inkassovarsel = Inkassovarsel || "No data provided";
-        this.FarInkas = FarInkas || "No data provided";
+    function Debtor(faktnr, belop, rente, dato, farfallsdato, inkassovarsel, farInkas) {
+        this.fordrHaver = "Olsen Rer";
+        this.faktnr = faktnr || "No data provided";
+        this.skyldner = "Hodeland lys AS";
+        this.belop = belop || "No data provided";
+        this.rente = rente || "No data provided";
+        this.delete = "";
+        this.dato = dato || "No data provided";
+        this.farfallsdato = farfallsdato || "No data provided";
+        this.inkassovarsel = inkassovarsel || "No data provided";
+        this.farInkas = farInkas || "No data provided";
     }
 
     $('.form-horizontal').validate({
         rules: {
             dato: {
                 required: true,
-                pattern:  /(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{2}$/
+                pattern: /(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{2}$/
             },
             farfallsdato: {
                 required: true,
-                pattern:  /(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{2}$/
+                pattern: /(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{2}$/
             },
-            inkassovarsel : {
+            inkassovarsel: {
                 required: true,
-                pattern:  /(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{2}$/
+                pattern: /(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{2}$/
             },
             farinkas: {
                 required: true,
-                pattern:  /(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{2}$/
+                pattern: /(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{2}$/
             },
             fakturanr: {
                 required: false,
-                pattern:  /^[0-9]{8,10}$/
+                pattern: /^[0-9]{8,10}$/
             },
-            belop:{
+            belop: {
                 required: true,
                 pattern: /^\d+(\.\d{1,2})?$/
             },
@@ -73,35 +76,41 @@ $('document').ready(function () {
                 required: true
             }
         },
-        highlight: function(element) {
+        highlight: function (element) {
             $(element).closest('.wrapper').addClass('has-error');
         },
-        unhighlight: function(element) {
+        unhighlight: function (element) {
             $(element).closest('.wrapper').removeClass('has-error');
         },
         errorElement: 'span',
         errorClass: 'help-block',
-        errorPlacement: function(error, element) {
-            if(element.parent('.wrapper').length) {
+        errorPlacement: function (error, element) {
+            if (element.parent('.wrapper').length) {
                 error.insertAfter(element.parent());
-           } else {
+            } else {
                 error.insertAfter(element);
-           }
+            }
         }
     });
 
-    $('.form-horizontal').submit(function() {
+    $('.form-horizontal').submit(function () {
 
-        if($('.form-horizontal').valid()){
-            if ($.fn.dataTable.isDataTable('#example')) {
-                table.destroy();
+        if ($('.form-horizontal').valid()) {
+            if ($.fn.dataTable.isDataTable('#table1')) {
+                table1.destroy();
             }
 
             ($('.form-horizontal').serializeObject());
 
-
-            var myFinalObject = new Debtor(result.fakturanr, result.belop, result.rentesats, result.dato, result.farfallsdato, result.inkassovarsel, result.farinkas);
-            var arrayToDisplay = [];
+            var myFinalObject = new Debtor(
+                result.fakturanr,
+                result.belop,
+                result.rentesats,
+                result.dato,
+                result.farfallsdato,
+                result.inkassovarsel,
+                result.farinkas),
+                arrayToDisplay = [];
 
             for (key in myFinalObject) {
                 if (myFinalObject.hasOwnProperty(key)) {
@@ -109,49 +118,40 @@ $('document').ready(function () {
                     arrayToDisplay.push(value);
                 }
             }
-            checkDups();
+            checkDupes();
             totalArrayToDisplay.push(arrayToDisplay);
 
-
-
-            table = $('#example').DataTable({
+            table1 = $('#table1').DataTable({
                 data: totalArrayToDisplay,
+                "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "All"]],
+                "iDisplayLength": 5,
                 columns: [
-                    {title: "Fordr.haver"},
-                    {title: "Faktnr/kto.nr"},
-                    {title: "Skyldner"},
-                    {title: "Belop"},
-                    {title: "Rente"},
-                    {
-                        title: "Delete", "defaultContent": "<div id='del'></div>", render: function () {
-                    }
-                    }
+                    {title: "Fordr.haver", "width": "15%"},
+                    {title: "Faktnr/kto.nr", "width": "15%"},
+                    {title: "Skyldner", "width": "25%"},
+                    {title: "Belop", "width": "15%"},
+                    {title: "Rente", "width": "20%"},
+                    {title: "Delete", "width": "10%", "defaultContent": "<div id='del'></div>", render: function () {}}
                 ]
             });
 
             $('tr>td>#del').on('click', function () {
                 var theRaw = $(this.closest('tr'));
                 var rowindex = $(this).closest("tr").index();
-                delete totalArrayToDisplay[rowindex];
+                totalArrayToDisplay.splice(rowindex, 1);
                 theRaw.remove();
-
-                //table.data();
-                //if(totalArrayToDisplay == 0){table.destroy();}
-                //table.clear();           // clear all the rows ( not really necessary since we call empty() at the end)
-                //table.destroy();              // remove table enhancements
-
             });
 
-            $('#example tbody').on('click', 'tr', function () {
+            $('#table1 tbody').on('click', 'tr', function () {
                 var rowindex = $(this).closest("tr").index();
                 var datesArray = [];
                 datesArray.push(totalArrayToDisplay[rowindex]);
 
-                if ($.fn.dataTable.isDataTable('#example1')) {
-                    table1.destroy();
+                if ($.fn.dataTable.isDataTable('#table2')) {
+                    table2.destroy();
                 }
 
-                table1 = $('#example1').DataTable({
+                table2 = $('#table2').DataTable({
                     bFilter: false,
                     bInfo: false,
                     paging: false,
@@ -176,19 +176,21 @@ $('document').ready(function () {
                     ]
                 });
 
-                $("#dialog").dialog();
+                $("#dialog").attr('title', 'Dates').dialog();
 
                 if ($(this).hasClass('selected')) {
                     $(this).removeClass('selected');
                 }
                 else {
-                    table.$('tr.selected').removeClass('selected');
+                    table1.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
                 }
             });
             return false;
         }
-        else{return;}
+        else {
+            return;
+        }
     });
 
 });

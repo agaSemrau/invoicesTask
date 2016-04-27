@@ -3,14 +3,9 @@ body {
     font-size: 12px;
 }
 
-p {
-    display:inline;
-}
-
 .container {
+    margin-top: 20px;
     border: 2px solid black;
-    width: 90%;
-    height: 80%;
     padding: 20px;
 }
 
@@ -21,7 +16,19 @@ p {
 label {
     text-align: right;
     vertical-align: middle;
-    padding: 7px 15px 7px 0px;
+    padding: 7px 15px 7px 0;
+}
+
+input[type=radio] {
+    margin-top: 0;
+}
+
+.ui-button-text{
+    display:none !important;
+}
+
+#fakturanr {
+    padding-right: 40px;
 }
 
 #del {
@@ -59,4 +66,38 @@ input[type="text"], .optgroup {
 
 span {
     text-align: right;
+}
+.help-block{
+    color: rgb(169, 68, 66) !important;
+}
+.percent {
+    line-height: 17px;
+    padding: 6px 0 6px;
+}
+
+button {
+    text-transform: uppercase;
+    font-size: 75% !important;
+}
+
+.downButtons {
+    margin: 20px;
+}
+
+h1 {
+    padding: 7px 15px 7px 15px;
+}
+
+em {
+    font-weight: bold;
+}
+
+.hide{
+    display: none;
+}
+
+.construction {
+    text-align: center;
+    padding-top: 50px;
+    font-size: large;
 }

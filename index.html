@@ -3,143 +3,156 @@
 <head>
     <title>Add Invoice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-<div class="container">
-    <form class="form-inline">
-        <label class="radio-inline">
-            <input type="radio" name="gender" value="inkassovarsel"> Inkassovarsel<br>
-        </label>
-        <label class="radio-inline">
-            <input type="radio" name="gender" value="inkassosak" checked> Inkassosak<br>
-        </label>
-        <label class="radio-inline">
-            <input type="radio" name="gender" value="tvistesak"> Tvistesak<br>
-        </label>
-    </form>
+<main>
+    <div class="container">
+        <div class="row radios">
+            <form class="form-inline col-sm-6">
+                <label class="radio-inline">
+                    <input type="radio" name="radio" id="inkassovarselRadio" value="inkassovarsel" checkstate="false">
+                    Inkassovarsel<br>
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="radio" id="inkassosakRadio" value="inkassosak" checkstate="true"
+                           checked="checked"> Inkassosak<br>
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="radio" id="tvistesakRadio" value="tvistesak" checkstate="false"> Tvistesak<br>
+                </label>
+            </form>
+            <h1>Skyldner <em>Hodeland lys AS</em></h1>
+        </div>
+        <div class="construction hide">Under Construction!</div>
+        <div class="inkassosakRadio">
+            <form class="form-horizontal" action="" method="post" role="form" data-toggle="validator">
 
-    <form class="form-horizontal" action="" method="post" role="form" data-toggle="validator">
-
-        <div class="form-group col-sm-12">
-            <div class="col-sm-6 ">
-                <label class="col-sm-6" for="fakturanr">Fakturanr/Kto.nr</label>
-                <div class="col-sm-4 col-left fvnr wrapper">
-                    <input type="text" class="form-control" name="fakturanr" id="fakturanr" placeholder="4101374092">
-                </div>
-            </div>
-
-            <div class="col-sm-6">
-                <label class="col-sm-4" for="belop">Belop*</label>
-                <div class="col-sm-3 col-right wrapper">
-                    <input type="text" class="form-control" name="belop" id="belop" placeholder="0,00">
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6 ">
+                        <label class="col-sm-6" for="fakturanr">Fakturanr/Kto.nr</label>
+                        <div class="col-sm-4 col-left wrapper">
+                            <input type="text" class="form-control" name="fakturanr" id="fakturanr"
+                                   placeholder="4101374092">
+                        </div>
                     </div>
-                    <p class="col-sm-5">Oppgi fakturobelop uten renter og gebyrer</p>
-            </div>
-        </div>
 
-        <div class="form-group col-sm-12">
-            <div class="col-sm-6">
-                <label class="col-sm-6">Dato faktura/lån* </label>
-                <div id="dato" class="input-group date datepicker col-sm-4 col-left wrapper">
-                    <input name="dato" class="form-control " type="text" placeholder="dd/mm/åå" required/>
-                    <span class="input-group-addon "><i class="glyphicon glyphicon-calendar"></i></span>
+                    <div class="col-sm-6 wrapper">
+                        <label class="col-sm-4" for="belop">Belop*</label>
+                        <div class="col-sm-3 col-right ">
+                            <input type="text" class="form-control" name="belop" id="belop" placeholder="0,00">
+                        </div>
+                        <p class="col-sm-5">Oppgi fakturobelop uten renter og gebyrer</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <label class="col-sm-4" for="kravet">Hva gjelder kravet?</label>
-                <div class="col-sm-8 col-right wrapper">
-                    <input type="text" class="form-control" name="kravet" id="kravet" placeholder="">
+
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6">
+                        <label class="col-sm-6">Dato faktura/lån* </label>
+                        <div id="dato" class="input-group date col-sm-4 col-left wrapper">
+                            <input name="dato" class="form-control " type="text" placeholder="dd/mm/åå" required/>
+                            <span class="input-group-addon "><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="col-sm-4" for="kravet">Hva gjelder kravet?</label>
+                        <div class="col-sm-8 col-right wrapper">
+                            <input type="text" class="form-control" name="kravet" id="kravet" placeholder="">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="form-group col-sm-12">
-            <div class="col-sm-6">
-                <label class="col-sm-6 ">Farfallsdato faktura/lån* </label>
-                <div id="farfallsdato" class="input-group date datepicker col-sm-4 col-left wrapper">
-                    <input name="farfallsdato" class="form-control" type="text" placeholder="dd/mm/åå"/>
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6">
+                        <label class="col-sm-6 ">Farfallsdato faktura/lån* </label>
+                        <div id="farfallsdato" class="input-group date col-sm-4 col-left wrapper">
+                            <input name="farfallsdato" class="form-control" type="text" placeholder="dd/mm/åå"/>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="col-sm-4" for="valuta">Valuta*</label>
+                        <div class="col-sm-4 col-right wrapper">
+                            <select class="form-control optgroup" id="valuta" name="valuta">
+                                <option>NOK</option>
+                                <option>PLN</option>
+                                <option>EUR</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <label class="col-sm-4" for="valuta">Valuta*</label>
-                <div class="col-sm-4 col-right wrapper">
-                    <select class="form-control optgroup" id="valuta" name="valuta">
-                        <option>NOK</option>
-                        <option>PLN</option>
-                        <option>EUR</option>
-                    </select>
+
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6">
+                        <label class="col-sm-6">Inkassovarsel sendt* </label>
+                        <div id="inkassovarsel" class="input-group date col-sm-4 col-left wrapper">
+                            <input name="inkassovarsel" class="form-control" type="text" placeholder="dd/mm/åå"/>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="col-sm-4" for="rentesats">Rentesats*</label>
+                        <div class="col-sm-5 col-right wrapper">
+                            <select class="form-control optgroup" id="rentesats" name="rentesats">
+                                <option>Standard forsinkelsesrente</option>
+                                <option>Skikk forsinkelsesrente</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <input disabled type="text" name="disabledTextInput" id="disabledTextInput"
+                                   class="form-control" placeholder="9,25" value="9,25"></div>
+                        <p class="col-sm-1 percent">%</p>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="form-group col-sm-12">
-            <div class="col-sm-6">
-                <label class="col-sm-6">Inkassovarsel sendt* </label>
-                <div  id="inkassovarsel" class="input-group date datepicker col-sm-4 col-left wrapper">
-                    <input name="inkassovarsel" class="form-control" type="text" placeholder="dd/mm/åå"/>
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6">
+                        <label class="col-sm-6">Farfallsdato Inkassovarsel* </label>
+                        <div id="farinkas" name="farinkas"
+                             class="input-group date col-sm-offset-1 col-sm-4 col-left wrapper">
+                            <input name="farinkas" class="form-control" type="text" placeholder="dd/mm/åå"/>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <label class="col-sm-4" for="rentesats">Rentesats*</label>
-                <div class="col-sm-5 col-right wrapper">
-                    <select class="form-control optgroup" id="rentesats" name="rentesats">
-                        <option>Standard forsinkelsesrente</option>
-                        <option>Skikk forsinkelsesrente</option>
-                    </select>
+
+                <div class="form-group col-sm-12" value="Submit" type="submit">
+                    <button class="btn btn-primary col-sm-offset-6 col-sm-3">Legg til innbetaling/kreditnota</button>
+                    <button class="btn btn-primary col-sm-offset-1 col-sm-2">Legg til ny faktura</button>
                 </div>
-                <div class="col-sm-2">
-                    <input disabled type="text" name="disabledTextInput" id="disabledTextInput" class="form-control" placeholder="9,25" value="9,25"></div>
-                <p class="col-sm-1">%</p>
-            </div>
+            </form>
+            <table id="table1" class="display" width="100%"></table>
         </div>
+    </div>
 
-        <div class="form-group col-sm-12">
-        <div class="col-sm-6">
-            <label class="col-sm-6">Farfallsdato Inkassovarsel* </label>
-            <div id="farinkas" name="farinkas" class="input-group date datepicker col-sm-offset-1 col-sm-4 col-left wrapper">
-                <input name="farinkas" class="form-control" type="text" placeholder="dd/mm/åå"/>
-                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-            </div>
+    <div id="dialog" title="Basic dialog" width="auto">
+        <table id="table2" class="display" width="100%"></table>
+    </div>
+
+    <div id="dialog1" title="Basic dialog" width="auto">
+        <p>This fakturanr exists already in the table.</p>
+    </div>
+
+    <div class="row downButtons ">
+        <div class=" col-sm-12">
+            <button class="btn btn-success col-sm-2">Tilbake</button>
+            <button class="btn btn-success col-sm-2 col-sm-offset-8">Neste</button>
         </div>
-            </div>
-
-        <div class="form-group col-sm-12" value="Submit" type="submit" >
-            <button class="btn btn-primary col-sm-offset-6 col-sm-3">Legg til innbetaling/kreditnota</button>
-            <button class="btn btn-primary col-sm-offset-1 col-sm-2">Legg til ny faktura</button>
-        </div>
-
-    </form>
-    <table id="example" class="display" width="100%"></table>
-</div>
-
-<div id="dialog" title="Basic dialog" width="auto">
-    <table id="example1" class="display" width="100%"></table>
-</div>
-
-<div id="dialog1" title="Basic dialog" width="auto">
-    <p>Duplikat</p>
-</div>
-
+    </div>
+</main>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
-<script src="APP/validate.js"></script>
+<script src="APP/radioForm.js"></script>
 <script src="APP/app.js"></script>
-
 </body>
 </html>
