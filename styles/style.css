@@ -1,69 +1,63 @@
-body {
+main, .datepicker {
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
 }
-
 .container {
     margin-top: 20px;
     border: 2px solid black;
     padding: 20px;
 }
-
 .form-horizontal {
     padding-top: 20px;
 }
-
 label {
     text-align: right;
-    vertical-align: middle;
     padding: 7px 15px 7px 0;
 }
-
 input[type=radio] {
     margin-top: 0;
 }
-
 .ui-button-text{
     display:none !important;
 }
-
-#fakturanr {
-    padding-right: 40px;
+.ui-dialog-title {
+    text-align: left !important;
 }
-
+.ui-dialog-titlebar, .ui-widget-header {
+    background: goldenrod !important;
+}
 #del {
     height: 24px;
     width: 24px;
     background-image: url("../images/trash.png");
     margin: auto;
 }
-
+.datepicker-switch {
+    font-weight: bold;
+    text-align:center;
+}
+.next, .prev, .dow {
+    font-weight: bold;
+}
 #dialog, #dialog1 {
     display:none;
-    width: 500px;
 }
-
 .ui-dialog {
     min-width: 300px !important;
     width:auto !important;
 }
-
-
 input[type="text"], .optgroup {
     font-size:12px;
 }
-
 .col-left {
     padding-left: 15px !important;
 }
-
 #form label.error {
     color:red;
 }
 #form input.error {
     border:1px solid red;
 }
-
 span {
     text-align: right;
 }
@@ -74,28 +68,22 @@ span {
     line-height: 17px;
     padding: 6px 0 6px;
 }
-
 button {
     text-transform: uppercase;
     font-size: 75% !important;
 }
-
 .downButtons {
     margin: 20px;
 }
-
 h1 {
     padding: 7px 15px 7px 15px;
 }
-
 em {
     font-weight: bold;
 }
-
 .hide{
     display: none;
 }
-
 .construction {
     text-align: center;
     padding-top: 50px;
