@@ -130,6 +130,7 @@ $('document').ready(function () {
                 result.farfallsdato,
                 result.inkassovarsel,
                 result.farinkas),
+
                 arrayToDisplay = [];
 
             for (key in myFinalObject) {
