@@ -97,3 +97,18 @@ em {
     padding-top: 50px;
     font-size: large;
 }
+
+@media screen and (max-width: 769px){
+    .submit{
+text-align: center;
+    }
+    .submit>button {
+        margin-top: 5px;
+    }
+    .downButtons {
+        text-align: center;
+    }
+    .wrapper {
+        padding-right: 0;
+    }
+}
