@@ -71,7 +71,7 @@ span {
     color: rgb(169, 68, 66) !important;
 }
 .percent {
-    line-height: 17px;
+    line-height: 24px;
     padding: 6px 0 6px;
 }
 button {
@@ -98,6 +98,14 @@ em {
     font-size: large;
 }
 
+.fvnr {
+    padding-right: 0;
+}
+
+#disabledTextInput {
+    padding:10px;
+}
+
 @media screen and (max-width: 769px){
     .submit{
 text-align: center;
@@ -110,5 +118,9 @@ text-align: center;
     }
     .wrapper {
         padding-right: 0;
+    }
+
+    #disabledTextInput {
+        padding:5px;
     }
 }

@@ -37,7 +37,7 @@
                 <div class="form-group col-sm-12">
                     <div class="col-sm-6 ">
                         <label class="col-sm-6" for="fakturanr">Fakturanr/Kto.nr</label>
-                        <div class="col-sm-4 col-left wrapper">
+                        <div class="col-sm-4 col-left wrapper fvnr">
                             <input type="text" class="form-control" name="fakturanr" id="fakturanr"
                                    placeholder="4101374092">
                         </div>
@@ -104,10 +104,10 @@
                                 <option>Skikk forsinkelsesrente</option>
                             </select>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-xs-2">
                             <input disabled type="text" name="disabledTextInput" id="disabledTextInput"
-                                   class="form-control" placeholder="9,25" value="9,25"></div>
-                        <p class="col-sm-1 percent">%</p>
+                                   class="form-control" placeholder="9,25" value="9,25" style="min-width: 45px" ></div>
+                        <p class="col-xs-1 percent">%</p>
                     </div>
                 </div>
 
@@ -122,9 +122,9 @@
                     </div>
                 </div>
 
-                <div class="form-group col-sm-12" value="Submit" type="submit">
-                    <button class="btn-responsive btn btn-primary col-sm-offset-6 col-sm-3" style="white-space: normal">Legg til innbetaling/kreditnota</button>
-                    <button class="btn-responsive btn btn-primary col-sm-offset-1 col-sm-2" style="white-space: normal">Legg til ny faktura</button>
+                <div class="form-group submit col-sm-12" value="Submit" type="submit">
+                    <button class="btn btn-primary col-sm-offset-6 col-xs-offset-1 col-sm-3" style="white-space: normal">Legg til innbetaling/kreditnota</button>
+                    <button class="btn btn-primary col-xs-offset-1 col-sm-2" style="white-space: normal">Legg til ny faktura</button>
                 </div>
             </form>
             <table id="table1" class="display" width="100%"></table>
@@ -139,10 +139,10 @@
         <p>This fakturanr exists already in the table.</p>
     </div>
 
-    <div class="row downButtons ">
+    <div class="row downButtons">
         <div class=" col-sm-12">
-            <button class="btn btn-success col-sm-2">Tilbake</button>
-            <button class="btn btn-success col-sm-2 col-sm-offset-8">Neste</button>
+            <button class="btn btn-success col-sm-2 col-sm-offset-0 ">Tilbake</button>
+            <button class="btn btn-success col-sm-2 col-sm-offset-8 col-xs-offset-2">Neste</button>
         </div>
     </div>
 </main>
